@@ -3,9 +3,11 @@
 # IG : @olahdatasemarang_
 # Flexible mediation analysis using natural effect models Use Package medflex With (In) R Software
 install.packages("readxl")
+install.packages("progress")
 install.packages("httr")
 install.packages("medflex")
 library("httr")
+library("progress")
 library("readxl")
 library("medflex")
 # Import Data Excel Into R From Github Olah Data Semarang (timbulwidodostp)
