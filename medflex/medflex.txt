@@ -18,9 +18,10 @@ authenticate(Sys.getenv("GITHUB_PAT"), ""),
 write_disk(path = temp_file))
 medflex <- readxl::read_excel(temp_file)
 # Estimate Flexible mediation analysis using natural effect models Use Package medflex With (In) R Software
-medflex_fit <- glm(negaff ~ factor(attbin) + gender + educ + age,family = gaussian, data = medflex)
+medflex_fit <- glm(negaff ~ factor(attbin) + gender + educ + age,family = gaussian, data = medflex)
+
 medflex_2 <- neWeight(medflex_fit)
-model_medflex <- neModel(UPB ~ attbin0 + attbin1 + gender + educ + age,family = binomial("logit"), medflex_2 = medflex_2)
+model_medflex <- neModel(UPB ~ attbin0 + attbin1 + gender + educ + age,family = binomial("logit"), expData = medflex_2)
 
 summary(model_medflex)
 exp(confint(model_medflex)[c("attbin01", "attbin11"), ])
